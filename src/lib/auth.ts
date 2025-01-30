@@ -1,14 +1,9 @@
 import prisma from '@/lib/prisma'
 import { sendVerificationAuthToken } from '@/lib/send-verification-auth-token'
 import { PrismaAdapter } from '@auth/prisma-adapter'
-import {
-  GetServerSidePropsContext,
-  NextApiRequest,
-  NextApiResponse,
-} from 'next'
 import type { DefaultSession } from 'next-auth'
-import { NextAuthOptions, getServerSession } from 'next-auth'
-import EmailProvider from 'next-auth/providers/email'
+import NextAuth from 'next-auth'
+import ForwardEmail from 'next-auth/providers/forwardemail'
 
 declare module 'next-auth' {
   interface Session {
@@ -18,12 +13,10 @@ declare module 'next-auth' {
   }
 }
 
-export const authOptions: NextAuthOptions = {
+export const { handlers, auth, signIn, signOut } = NextAuth({
   adapter: PrismaAdapter(prisma),
   providers: [
-    EmailProvider({
-      server: process.env.EMAIL_SERVER,
-      from: process.env.EMAIL_FROM,
+    ForwardEmail({
       async sendVerificationRequest({ identifier: email, url }) {
         await sendVerificationAuthToken(email, url)
       },
@@ -41,15 +34,4 @@ export const authOptions: NextAuthOptions = {
     },
   },
   debug: false, // process.env.NODE_ENV === 'development'
-}
-
-export const getAuthSession = async () => getServerSession(authOptions)
-
-export function auth(
-  ...args:
-    | [GetServerSidePropsContext['req'], GetServerSidePropsContext['res']]
-    | [NextApiRequest, NextApiResponse]
-    | []
-) {
-  return getServerSession(...args, authOptions)
-}
+})

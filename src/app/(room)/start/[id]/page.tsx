@@ -7,19 +7,21 @@ import { notFound, redirect } from 'next/navigation'
 export default async function StartPage({
   params
 }: {
-params: { id: string }
+  params: Promise<{ id: string }>
 }) {
   const session = await auth()
+  const { id } = await params
+
   if (!session) {
     redirect('/')
   }
 
-  const canAccess = await canAccessGroup(params.id, session.user.id!)
+  const canAccess = await canAccessGroup(id, session.user.id!)
   if (!canAccess.canAccess) {
     notFound()
   }
 
-  const group = await getGroupForStartQuery(params.id)
+  const group = await getGroupForStartQuery(id)
   const activeRooms = await getGroupInProgressQuery([group.id], session.user.id!)
   if(activeRooms.length > 0){
     redirect(`/room/${activeRooms[0].id}`)

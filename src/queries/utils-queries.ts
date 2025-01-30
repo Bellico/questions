@@ -3,7 +3,8 @@ import { cookies } from 'next/headers'
 
 export async function translate(namespaces: string[] | string) {
   if(typeof namespaces === 'string') namespaces = [namespaces]
-  const locale = cookies().get('locale')?.value
+  const cookieStore = await cookies()
+  const locale = cookieStore.get('locale')?.value
 
   return {
     locale,

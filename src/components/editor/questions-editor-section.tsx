@@ -78,9 +78,11 @@ export function QuestionsEditorSection({
   }, [setValue, subject])
 
   // Send new state values to store
-  const updateQuestionDebounced = useDebounce(() => {
+  const updateQuestionDebounced = useDebounce((d) => {
     canAutoAddResponse.current = true
     const newValues = getValues()
+    console.log(qEditorMarkdownRef.current?.getMarkdown()!)
+    console.log(d)
 
     updateQuestion(keyMap, {
       title: newValues.title,
@@ -159,7 +161,7 @@ export function QuestionsEditorSection({
                     {/* <Textarea className="min-h-[100px]" placeholder="Write your next question here..." {...field} /> */}
                     <QEditorMarkdown className="rounded-md border border-input bg-background px-3 py-2 text-sm ring-offset-background placeholder:text-muted-foreground"
                       markdown={subject}
-                      editorRef={qEditorMarkdownRef}
+                      ref={qEditorMarkdownRef}
                       onChange={updateQuestionDebounced}
                       placeholder={t('NextQuestion')} />
                   </FormControl>

@@ -12,11 +12,14 @@ export default async function RoomPage({
   params,
   searchParams
 }: {
-  params: { id: string },
-  searchParams?: { shareLink?: string }
+  params: Promise<{ id: string }>,
+  searchParams: Promise<{ shareLink?: string }>
 }) {
   const session = await auth()
-  const room = await canViewFinalRoomQuery(params.id, session?.user.id, searchParams?.shareLink)
+  const { id } = await params
+  const { shareLink } = await searchParams
+
+  const room = await canViewFinalRoomQuery(id, session?.user.id, shareLink)
 
   if(!room){
     redirect('/')
@@ -27,7 +30,7 @@ export default async function RoomPage({
     canRetry: (room.withRetry || 0) > 0,
     playConfetti: room.withResults && room.score === 100,
     roomId: room.id,
-    shareLink: searchParams?.shareLink
+    shareLink: shareLink
   }
 
   if(!room.withResults){

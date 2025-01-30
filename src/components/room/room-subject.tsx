@@ -31,7 +31,7 @@ export function RoomSubject() {
       }
 
       <div className={cn({'text-center': shouldCenterSubject})}>
-        <QReaderMarkdown editorRef={qEditorMarkdownRef} markdown={currentQuestion.subject}  />
+        <QReaderMarkdown ref={qEditorMarkdownRef} markdown={currentQuestion.subject}  />
       </div>
     </>
   )

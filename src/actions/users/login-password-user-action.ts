@@ -43,7 +43,8 @@ export const loginPasswordUserAction = withValidate(
     })
 
     const cookieName = process.env.NODE_ENV === 'production' ? '__Secure-next-auth.session-token' : 'next-auth.session-token'
-    cookies().set(cookieName, session.sessionToken, {
+    const cookieStore = await cookies()
+    cookieStore.set(cookieName, session.sessionToken, {
       expires: session.expires,
       httpOnly: process.env.NODE_ENV === 'production',
       secure: process.env.NODE_ENV === 'production',

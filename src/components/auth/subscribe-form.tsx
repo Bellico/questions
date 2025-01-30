@@ -49,7 +49,7 @@ export default function SubscribeForm() {
       return
     }
 
-    const response = await signIn('email', { email: data.email, redirect: false })
+    const response = await signIn('forwardemail', { email: data.email, redirect: false })
     if (!response?.ok) {
       setError('root.serverError', { type: 'custom', message: t('SignInError') })
     }

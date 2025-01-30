@@ -8,12 +8,14 @@ export default async function RoomPage({
   params,
   searchParams
 }: {
-params: { id: string },
-searchParams?: { shareLink?: string }
+  params: Promise<{ id: string }>,
+  searchParams: Promise<{ shareLink?: string }>
 }) {
   const session = await auth()
+  const { id } = await params
+  const { shareLink } = await searchParams
 
-  const room = await canPlayRoomQuery(params.id, session?.user.id, searchParams?.shareLink)
+  const room = await canPlayRoomQuery(id, session?.user.id, shareLink)
   if(!room){
     notFound()
   }
@@ -34,6 +36,6 @@ searchParams?: { shareLink?: string }
       progress={progress}
       withNavigate={room.withNavigate}
       withProgress={room.withProgress}
-      shareLink={searchParams?.shareLink} />
+      shareLink={shareLink} />
   )
 }

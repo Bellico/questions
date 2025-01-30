@@ -21,7 +21,7 @@ export function useQuestionsEditorPersist() {
 }
 
 export function QuestionsEditorProvider({ value, children }: PropsWithChildren<{ value?: QuestionGroupType }>) {
-  const storeRef = useRef<QuestionsEditorStore>()
+  const storeRef = useRef<QuestionsEditorStore>(null)
   let storeValue: QuestionsEditorStateProps | undefined = undefined
 
   if (value) {

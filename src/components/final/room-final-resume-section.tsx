@@ -1,8 +1,10 @@
+'use client'
+
 import { ArrayType, cn, diffDateToDhms } from '@/lib/utils'
 import { getRoomFinalResumeQuery } from '@/queries/pages-queries'
-import { translate } from '@/queries/utils-queries'
 import { CheckCheck, XCircle } from 'lucide-react'
 import dynamic from 'next/dynamic'
+import { useTranslation } from 'react-i18next'
 
 const QReaderMarkdown = dynamic(() => import('../mdx/mdx-markdown-reader'), {
   ssr: false
@@ -10,9 +12,9 @@ const QReaderMarkdown = dynamic(() => import('../mdx/mdx-markdown-reader'), {
 
 type RoomFinalResumeSectionPropsType = ArrayType<Awaited<ReturnType<typeof getRoomFinalResumeQuery>>>
 
-export async function RoomFinalResumeSection({answerResume} : { answerResume: RoomFinalResumeSectionPropsType }) {
+export function RoomFinalResumeSection({answerResume} : { answerResume: RoomFinalResumeSectionPropsType }) {
 
-  const { t } = await translate(['room', 'global'])
+  const { t } = useTranslation(['room', 'global'])
 
   if(answerResume.question == null){
     return(

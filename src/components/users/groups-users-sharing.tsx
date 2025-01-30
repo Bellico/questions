@@ -13,6 +13,7 @@ import { useEffect, useState } from 'react'
 import { useFieldArray, useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
+import { useShallow } from 'zustand/react/shallow'
 
 type GroupsUsersSharingProps = {
   groupId: string
@@ -31,7 +32,10 @@ export function GroupsUsersSharing({ groupId } : GroupsUsersSharingProps) {
   const { t } = useTranslation(['global', 'actions'])
   const requestAction = useAction(false)
 
-  const [setDialogOpen, setDialogLoading] = useAppStore((s) => [s.setDialogOpen, s.setDialogLoading])
+  const [setDialogOpen, setDialogLoading] = useAppStore(
+    useShallow((s) => [s.setDialogOpen, s.setDialogLoading])
+  )
+
   const [allUsers, setAllUsers] = useState<{ id: string, name: string | null, email: string }[]>([])
 
   const form = useForm<ShareFormType>({

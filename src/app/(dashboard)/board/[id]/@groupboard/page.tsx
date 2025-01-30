@@ -14,13 +14,14 @@ import { Suspense } from 'react'
 export default async function GroupBoardPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
 
   const { t } = await translate('global')
+  const { id } = await params
 
   const session = await auth()
-  const isOwner = await isGroupOwner(params.id, session!.user.id!)
+  const isOwner = await isGroupOwner(id, session!.user.id!)
 
   if(!isOwner){
     notFound()
@@ -31,20 +32,20 @@ export default async function GroupBoardPage({
 
       <section>
         <div className="container">
-          <h1 className="title">{await getGroupName(params.id)}</h1>
+          <h1 className="title">{await getGroupName(id)}</h1>
 
           <div className="my-12 flex justify-center">
-            <Link href={`/start/${params.id}`}>
+            <Link href={`/start/${id}`}>
               <Button className="mr-2" size="lg"><Play className="mr-2 size-4" />{t('Start')}</Button>
             </Link>
 
-            <Link href={`/editor/${params.id}`}>
+            <Link href={`/editor/${id}`}>
               <Button variant="secondary" size="lg"><Pencil className="mr-2 size-4" />{t('Edit')}</Button>
             </Link>
           </div>
 
           <Suspense fallback={<Spinner />}>
-            <RoomsList userId={session?.user.id!} groupId={params.id} mode='Rating' />
+            <RoomsList userId={session?.user.id!} groupId={id} mode='Rating' />
           </Suspense>
 
         </div>
@@ -53,7 +54,7 @@ export default async function GroupBoardPage({
       <section>
         <div className="container">
           <Suspense fallback={<Spinner />}>
-            <AnswersList userId={session?.user.id!} groupId={params.id} />
+            <AnswersList userId={session?.user.id!} groupId={id} />
           </Suspense>
         </div>
       </section>

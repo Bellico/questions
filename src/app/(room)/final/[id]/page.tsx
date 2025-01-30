@@ -10,11 +10,14 @@ export default async function RoomPage({
   params,
   searchParams
 }: {
-  params: { id: string },
-  searchParams?: { shareLink?: string }
+  params: Promise<{ id: string }>,
+  searchParams: Promise<{ shareLink?: string }>
 }) {
   const session = await auth()
-  const room = await canViewFinalRoomQuery(params.id, session?.user.id, searchParams?.shareLink)
+  const { id } = await params
+  const { shareLink } = await searchParams
+
+  const room = await canViewFinalRoomQuery(id, session?.user.id, shareLink)
 
   if(!room || !room.withResults){
     redirect('/')
@@ -22,7 +25,7 @@ export default async function RoomPage({
 
   return (
     <>
-      <RoomFinalSummary roomId={room.id} canRetry={(room.withRetry || 0) > 0} shareLink={searchParams?.shareLink}/>
+      <RoomFinalSummary roomId={room.id} canRetry={(room.withRetry || 0) > 0} shareLink={shareLink}/>
       <Suspense fallback={<Spinner />} >
         <RoomFinalResume roomId={room.id} />
       </Suspense>

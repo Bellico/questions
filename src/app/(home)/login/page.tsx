@@ -3,7 +3,9 @@ import { HomeHeroLogin } from '@/components/layouts/home-hero-login'
 export default async function HomePageLogin({
   searchParams
 }: {
-searchParams?: { email: string }
+searchParams: Promise<{ email: string }>
 }) {
-  return <HomeHeroLogin email={searchParams?.email!} />
+  const { email } = await searchParams
+
+  return <HomeHeroLogin email={email} />
 }

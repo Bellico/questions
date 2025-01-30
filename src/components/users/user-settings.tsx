@@ -18,11 +18,16 @@ import { useEffect, useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import packageJson from '../../../package.json'
+import { useShallow } from 'zustand/react/shallow'
 
 export function UserSettings(data: UserSettingsType & { email: string}) {
   const router = useRouter()
   const { t } = useTranslation(['global', 'actions'])
-  const [setDialogOpen, setDialogLoading] = useAppStore((s) => [s.setDialogOpen, s.setDialogLoading])
+
+  const [setDialogOpen, setDialogLoading] = useAppStore(
+    useShallow((s) => [s.setDialogOpen, s.setDialogLoading])
+  )
+
   const requestAction = useAction(false)
   const [showPassword, setShowPassword] = useState(false)
 

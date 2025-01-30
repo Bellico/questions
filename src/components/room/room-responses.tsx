@@ -10,6 +10,7 @@ import { zodResolver } from '@hookform/resolvers/zod'
 import { useForm } from 'react-hook-form'
 import { useTranslation } from 'react-i18next'
 import { z } from 'zod'
+import { useShallow } from 'zustand/react/shallow'
 
 const RoomResponsesSchema = z.object({
   responses: z.array(z.object({
@@ -31,7 +32,9 @@ export function RoomResponses({ submitAnswerChoices }: RoomResponsesProps) {
 
   const { t } = useTranslation('global')
   const currentQuestion = useRoomContext(state => state.currentQuestion)
-  const [isAutoSubmit, setAutoSubmit ] = useRoomContext(state => [ state.isAutoSubmit, state.setAutoSubmit ])
+  const [isAutoSubmit, setAutoSubmit ] = useRoomContext(
+    useShallow(state => [ state.isAutoSubmit, state.setAutoSubmit ])
+  )
 
   const responses = currentQuestion.responses.map(r => ({...r, isCorrect : false}))
   const form = useForm<RoomResponsesType>({

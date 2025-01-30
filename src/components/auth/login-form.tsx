@@ -47,7 +47,7 @@ export default function LoginForm({ email } : { email : string} ) {
   }
 
   const signWithEmail = async () => {
-    const response = await signIn('email', { email: email, redirect: false })
+    const response = await signIn('forwardemail', { email: email, redirect: false })
     if (!response?.ok) {
       setError('root.serverError', { type: 'custom', message: t('SignInError') })
     }

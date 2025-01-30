@@ -19,9 +19,9 @@ import {
 import type { ForwardedRef } from 'react'
 
 export default function MarkdownEditor({
-  editorRef,
+  ref,
   ...props
-}: { editorRef: ForwardedRef<MDXEditorMethods> | null } & MDXEditorProps) {
+}: { ref: ForwardedRef<MDXEditorMethods | null> } & MDXEditorProps) {
   return (
     <MDXEditor
       plugins={[
@@ -43,7 +43,7 @@ export default function MarkdownEditor({
         }),
         ...PLUGINS_MDX]}
       contentEditableClassName="q-editor-markdown"
-      ref={editorRef}
+      ref={ref}
       {...props} />
   )
 }

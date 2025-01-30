@@ -4,11 +4,12 @@ import { QuestionsEditor } from '@/components/editor/questions-editor'
 export default async function EditorPage({
   searchParams,
 }: {
-  searchParams: { useDraft: boolean }
+  searchParams: Promise<{ useDraft: boolean }>
 }) {
+  const { useDraft } = await searchParams
   return (
     <QuestionsEditor
-      useDraft={searchParams.useDraft}
+      useDraft={useDraft}
       saveGroupAction={createQuestionGroupAction}
     />
   )

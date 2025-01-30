@@ -17,7 +17,8 @@ export default async function BoardLayout({
     redirect('/')
   }
 
-  const locale = cookies().get('locale')?.value ?? 'en'
+  const cookieStore = await cookies()
+  const locale =  cookieStore.get('locale')?.value ?? 'en'
   const user = await getUsername(session.user.id!)
 
   return (

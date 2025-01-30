@@ -25,6 +25,7 @@ import { cn } from '@/lib/utils'
 import { useAppStore } from '@/stores/app-store'
 import { PropsWithChildren } from 'react'
 import { useTranslation } from 'react-i18next'
+import { useShallow } from 'zustand/react/shallow'
 
 type DrawerDialogProps = {
   dialogId: string,
@@ -37,8 +38,11 @@ type DrawerDialogProps = {
 
 export function DrawerDialog({ dialogId, trigger, title, description, className, children }: PropsWithChildren<DrawerDialogProps>) {
   const { t } = useTranslation('global')
-  const [open, setDialogOpen, isDialogLoading ] = useAppStore((s) => [s.dialogOpen(dialogId), s.setDialogOpen, s.isDialogLoading])
   const isDesktop = useMediaQuery('(min-width: 768px)')
+
+  const [open, setDialogOpen, isDialogLoading ] = useAppStore(
+    useShallow((s) => [s.dialogOpen(dialogId), s.setDialogOpen, s.isDialogLoading])
+  )
 
   if (isDesktop) {
     return (

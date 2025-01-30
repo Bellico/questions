@@ -7,9 +7,10 @@ import { Suspense } from 'react'
 export default async function GroupStatsPage({
   params,
 }: {
-  params: { id: string }
+  params: Promise<{ id: string }>
 }) {
   const { t } = await translate('global')
+  const { id } = await params
 
   const session = await auth()
 
@@ -19,7 +20,7 @@ export default async function GroupStatsPage({
         <h1 className="title">{t('BoardStats')}</h1>
 
         <Suspense fallback={<Spinner />}>
-          <BoardStats userId={session?.user.id!} groupId={params.id} />
+          <BoardStats userId={session?.user.id!} groupId={id} />
         </Suspense>
 
       </div>

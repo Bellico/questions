@@ -8,20 +8,23 @@ export default async function StartPage({
   params,
   searchParams
 }: {
-params: { id: string }
-searchParams?: { shareLink?: string }
+  params: Promise<{ id: string }>,
+  searchParams: Promise<{ shareLink?: string }>
 }) {
-  if(!searchParams?.shareLink){
+  const { id } = await params
+  const { shareLink } = await searchParams
+
+  if(!shareLink){
     redirect('/')
   }
 
-  const room = await getGroupForShareQuery(params.id, searchParams.shareLink)
+  const room = await getGroupForShareQuery(id, shareLink)
   if (!room) {
     redirect('/')
   }
 
   if (room.dateStart) {
-    redirect(`/room/${params.id}/?shareLink=${searchParams?.shareLink}`)
+    redirect(`/room/${id}/?shareLink=${shareLink}`)
   }
 
   const { t } = await translate('room')
@@ -29,12 +32,12 @@ searchParams?: { shareLink?: string }
   async function startShareRoom(){
     'use server'
     const result = await startShareRoomAction({
-      roomId: params.id,
-      shareLink: searchParams?.shareLink!
+      roomId: id,
+      shareLink: shareLink
     })
 
     if(result.success){
-      redirect(`/room/${params.id}/?shareLink=${searchParams?.shareLink}`)
+      redirect(`/room/${id}/?shareLink=${shareLink}`)
     }
   }
 

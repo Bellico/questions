@@ -15,7 +15,7 @@ export function useRoomContext<T>(selector: (state: RoomState) => T): T {
 }
 
 export function RoomProvider({ value, children }: PropsWithChildren<{ value: RoomStateProps }>) {
-  const storeRef = useRef<RoomStore>()
+  const storeRef = useRef<RoomStore>(null)
   storeRef.current = createRoomStore(value)
 
   return (

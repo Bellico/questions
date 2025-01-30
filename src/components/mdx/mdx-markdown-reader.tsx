@@ -4,15 +4,15 @@ import { PLUGINS_MDX } from '@/components/mdx/mdx-markdown-plugins'
 import {
   MDXEditor, MDXEditorMethods
 } from '@mdxeditor/editor'
-import { ForwardedRef } from 'react'
+import { RefObject } from 'react'
 
 export default function MarkdownReader({
-  editorRef,
+  ref,
   markdown
-}: { editorRef?: ForwardedRef<MDXEditorMethods> | null } & { markdown : string}) {
+}: { ref?: RefObject<MDXEditorMethods | null> } & { markdown : string}) {
   return (
     <MDXEditor
-      ref={editorRef}
+      ref={ref}
       markdown={markdown}
       readOnly={true}
       contentEditableClassName="q-editor-markdown"

@@ -8,12 +8,14 @@ export default async function EditorPage({
   params,
   searchParams,
 }: {
-  params: { id: string }
-  searchParams: { useDraft: boolean }
+  params: Promise<{ id: string }>
+  searchParams: Promise<{ useDraft: boolean }>
 }) {
   const session = await auth()
-  const useDraft = Boolean(searchParams.useDraft)
-  const questionGroup = await getEditorQuery(params.id, session?.user.id!)
+  const { id } = await params
+  const { useDraft } = await searchParams
+
+  const questionGroup = await getEditorQuery(id, session?.user.id!)
 
   if (!questionGroup) {
     notFound()

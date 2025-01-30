@@ -44,7 +44,8 @@ export const updateUserSettingsAction = withValidateAndSession(
       })
     }
 
-    cookies().set('locale', data.locale, { maxAge: Date.now() })
+    const cookieStore = await cookies()
+    cookieStore.set('locale', data.locale, { maxAge: Date.now() })
 
     return {
       success: true
