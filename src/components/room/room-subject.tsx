@@ -23,8 +23,8 @@ export function RoomSubject() {
       {currentQuestion.navigate?.correction ?
         <h1 className="title flex flex-col items-center justify-center">
           <span>{currentQuestion.title}</span>
-          {currentQuestion.navigate.hasGood && <CheckCheck className="mt-2 size-11 animate-fadeIn text-success opacity-0" />}
-          {!currentQuestion.navigate.hasGood && <XCircle className="mt-2 size-11 animate-fadeIn text-destructive opacity-0" />}
+          {currentQuestion.navigate.hasGood && <CheckCheck className="mt-2 size-11 animate-fade-in text-success opacity-0" />}
+          {!currentQuestion.navigate.hasGood && <XCircle className="mt-2 size-11 animate-fade-in text-destructive opacity-0" />}
         </h1>:
 
         <h1 className="title">{currentQuestion.title}</h1>

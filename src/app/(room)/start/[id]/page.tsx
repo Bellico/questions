@@ -33,7 +33,7 @@ export default async function StartPage({
   }
 
   return (
-    <section className="animate-moveToLeft">
+    <section className="animate-move-to-left">
       <div className="container">
 
         <h1 className="title">

@@ -51,7 +51,7 @@ export function DrawerDialog({ dialogId, trigger, title, description, className,
           <DialogTrigger asChild>
             {trigger}
           </DialogTrigger>
-          <DialogContent className={cn('max-w-screen-sm', className)}>
+          <DialogContent className={cn('max-w-(--breakpoint-sm)', className)}>
             <DialogHeader>
               <DialogTitle>{title}</DialogTitle>
               {description &&

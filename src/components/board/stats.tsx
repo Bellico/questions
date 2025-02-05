@@ -12,7 +12,7 @@ export const BoardStats = async ({ userId, groupId } : { userId: string , groupI
     await getStatsQuery(userId)
 
   return (
-    <div className="my-5 grid animate-fadeIn grid-cols-2 gap-4 lg:grid-cols-4">
+    <div className="my-5 grid animate-fade-in grid-cols-2 gap-4 lg:grid-cols-4">
       <Card>
         <CardHeader className="flex flex-row items-center justify-between space-y-0 pb-2">
           <CardTitle className="text-sm font-medium">

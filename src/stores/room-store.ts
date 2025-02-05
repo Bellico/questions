@@ -6,7 +6,7 @@ export type RoomStateProps = {
     progress : RoomProgressType[]
 }
 
-type animationType = 'animate-scaleUp' | 'animate-zoomInRoom' | 'animate-zoomOutRoom'
+type animationType = 'animate-scale-up' | 'animate-zoom-in-room' | 'animate-zoom-out-room'
 
 export type RoomState = RoomStateProps & {
   animation: animationType,
@@ -28,7 +28,7 @@ export type RoomState = RoomStateProps & {
 
 export const createRoomStore = (initProps: RoomStateProps) => {
   const DEFAULT_PROPS = {
-    animation: 'animate-scaleUp' as animationType,
+    animation: 'animate-scale-up' as animationType,
     isCompleted : false,
     isEnd: false,
     isAutoSubmit: false,
@@ -44,7 +44,7 @@ export const createRoomStore = (initProps: RoomStateProps) => {
 
     setAutoSubmit: (isAutoSubmit : boolean) => set(() => ({ isAutoSubmit  })),
 
-    disappears: () => set((state) => ({ animation : 'animate-zoomOutRoom', isCompleted: state.isEnd })),
+    disappears: () => set((state) => ({ animation : 'animate-zoom-out-room', isCompleted: state.isEnd })),
 
     appearsNewQuestion: (question: RoomQuestionNextType) => set((state) => {
       const newProgress = [...state.progress]
@@ -57,10 +57,10 @@ export const createRoomStore = (initProps: RoomStateProps) => {
         const index = newProgress.findIndex(p => !p.id)
         newProgress[index].id = question.questionId
 
-        return { currentQuestion: question, animation : 'animate-zoomInRoom', progress: newProgress, canGoPrev, canGoNext }
+        return { currentQuestion: question, animation : 'animate-zoom-in-room', progress: newProgress, canGoPrev, canGoNext }
       }
 
-      return { currentQuestion: question, animation : 'animate-zoomInRoom', canGoPrev, canGoNext }
+      return { currentQuestion: question, animation : 'animate-zoom-in-room', canGoPrev, canGoNext }
     }),
 
     disappearsWithResult: (result : RoomQuestionResultType, isEnd: boolean) => set((state) => {
@@ -70,7 +70,7 @@ export const createRoomStore = (initProps: RoomStateProps) => {
       newProgress[index].title = result.title
       newProgress[index].isAnswer = true
 
-      return { animation : 'animate-zoomOutRoom', progress: newProgress, progressingId: result.id!, isEnd }
+      return { animation : 'animate-zoom-out-room', progress: newProgress, progressingId: result.id!, isEnd }
     }),
 
     applyCorrection: (result : RoomQuestionResultType, choices: string[], isEnd: boolean) => set((state) => {

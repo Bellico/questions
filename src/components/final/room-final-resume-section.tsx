@@ -47,9 +47,9 @@ export function RoomFinalResumeSection({answerResume} : { answerResume: RoomFina
         <div className="flex-1">
           {answerResume.question?.responses.map(response => (
             <div key={response.id} className={cn('m-3 border border-gray-200 dark:border-secondary p-5 shadow-lg rounded-xl', {
-              '!border-destructive line-through text-destructive': !response.isCorrect && choices.includes(response.id),
+              'border-destructive! line-through text-destructive': !response.isCorrect && choices.includes(response.id),
               'border-success bg-success': response.isCorrect && choices.includes(response.id),
-              '!border-success border-dashed border-2': response.isCorrect && !choices.includes(response.id),
+              'border-success! border-dashed border-2': response.isCorrect && !choices.includes(response.id),
               'text-foreground/30': !response.isCorrect && !choices.includes(response.id)
             })}>
               <p>{response.text}</p>

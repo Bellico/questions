@@ -20,10 +20,10 @@ export function RoomCorrection({ goToNext }: RoomCorrectionProps) {
     <>
       <div className="my-5 grid gap-4 md:grid-cols-2 md:gap-8">
         {responses.map((item, index) => (
-          <div key={item.id} className={cn('min-h-24 rounded-xl border bg-accent shadow-sm transition-colors',{
-            '!border-destructive line-through text-destructive': correction && !correction.includes(item.id) && choices.includes(item.id) ,
+          <div key={item.id} className={cn('min-h-24 rounded-xl border bg-accent shadow-xs transition-colors',{
+            'border-destructive! line-through text-destructive': correction && !correction.includes(item.id) && choices.includes(item.id) ,
             'border-success bg-success': correction && correction.includes(item.id) && choices.includes(item.id),
-            '!border-success border-dashed border-2': correction && correction.includes(item.id) && !choices.includes(item.id),
+            'border-success! border-dashed border-2': correction && correction.includes(item.id) && !choices.includes(item.id),
             'text-foreground/30': correction && !correction.includes(item.id) && !choices.includes(item.id)
           })}>
 

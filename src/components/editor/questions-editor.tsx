@@ -15,7 +15,7 @@ type QuestionsEditorProps = {
 
 export function QuestionsEditor(props: QuestionsEditorProps) {
   return (
-    <div className="animate-zoomInEditor">
+    <div className="animate-zoom-in-editor">
       <QuestionsEditorProvider value={props.questionGroup}>
         <div className="container">
           <QuestionsEditorActions {...props} />

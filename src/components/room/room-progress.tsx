@@ -35,7 +35,7 @@ export function RoomProgress({ withNavigate, navigate } : RoomProgressProps) {
   }
 
   return(
-    <div className="group fixed  bottom-0 h-6 w-full animate-fadeIn border-t border-t-gray-200 bg-[#cbc7c7] dark:border-t-black dark:bg-[#1e1e1e] lg:h-8">
+    <div className="group fixed  bottom-0 h-6 w-full animate-fade-in border-t border-t-gray-200 bg-[#cbc7c7] dark:border-t-black dark:bg-[#1e1e1e] lg:h-8">
       <div className="flex size-full">
         {progress.map((q, i) => (
           <div
@@ -57,7 +57,7 @@ export function RoomProgress({ withNavigate, navigate } : RoomProgressProps) {
 
             <div className={cn(showTitle)}>
               <span>{q.title}</span>
-              {q.isAnswer && <span className="animate-fadeIn opacity-0 delay-700">{getAnwserResultDisplay(q.hasGood)}</span>}
+              {q.isAnswer && <span className="animate-fade-in opacity-0 delay-700">{getAnwserResultDisplay(q.hasGood)}</span>}
             </div>
           </div>
         ))}

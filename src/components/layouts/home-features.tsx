@@ -26,7 +26,7 @@ export const HomeFeatures = () => {
   return(
     <>
       <section className="relative h-screen py-20">
-        <div className="container max-w-screen-2xl space-y-28">
+        <div className="container max-w-(--breakpoint-2xl) space-y-28">
           <motion.div style={{scale, translateY}} className="sticky flex items-center justify-center">
             <motion.div {...levitation} style={{opacity}}  className="absolute -z-10 aspect-square w-[700px] origin-center rounded-full bg-primary blur-[60px]"></motion.div>
             <QEditorIcon colored className="size-[30rem] drop-shadow-q-editor-icon" />
@@ -41,7 +41,7 @@ export const HomeFeatures = () => {
       </section>
 
       <section className="py-14">
-        <div className="container max-w-screen-2xl px-[64px] py-[120px]">
+        <div className="container max-w-(--breakpoint-2xl) px-[64px] py-[120px]">
           <div className="flex gap-20">
             <motion.div {...show_time(0)} className="flex-1 space-y-6">
               <h2 className="text-5xl font-extrabold tracking-wide">Enhanced Customer Engagement</h2>
@@ -57,7 +57,7 @@ export const HomeFeatures = () => {
       </section>
 
       <section className="py-14">
-        <div className="container max-w-screen-2xl px-[64px] py-[120px]">
+        <div className="container max-w-(--breakpoint-2xl) px-[64px] py-[120px]">
           <div className="flex gap-20">
             <motion.div {...show_time(0)} className="flex-1">
               <div className="h-[640px] w-[620px] rounded-3xl bg-gray-400"></div>
@@ -73,7 +73,7 @@ export const HomeFeatures = () => {
       </section>
 
       <section className="py-14">
-        <div className="container max-w-screen-2xl px-[64px] py-[120px]">
+        <div className="container max-w-(--breakpoint-2xl) px-[64px] py-[120px]">
           <div className="flex flex-col items-center gap-20">
             <motion.div {...show_time(0)} className="space-y-6 text-center">
               <h2 className="text-5xl font-extrabold tracking-wide">Build your dream site. No compromises.</h2>

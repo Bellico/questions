@@ -38,7 +38,7 @@ export async function RoomFinalHero({
 
         {children}
 
-        <div className="flex animate-fadeIn opacity-0 delay-1000">
+        <div className="flex animate-fade-in opacity-0 delay-1000">
           {canRetry &&
             <RoomFinalRetry roomId={roomId} shareLink={shareLink} />
           }

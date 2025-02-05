@@ -60,7 +60,7 @@ export function QuestionGroupNew({className, children} : PropsWithChildren<{clas
     >
       <Link href="/editor">
         <div className="pointer-events-none flex h-full min-h-[100px] items-center justify-center text-sm text-gray-400">
-          { fileEnter ? <FileUp className="scale-150 animate-scaleUp text-primary" /> : children }
+          { fileEnter ? <FileUp className="scale-150 animate-scale-up text-primary" /> : children }
         </div>
       </Link>
     </div>

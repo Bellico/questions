@@ -24,7 +24,7 @@ export async function QuestionGroupsList({userId} : { userId: string}) {
   }
 
   return (
-    <div className="my-5 grid animate-fadeIn gap-4 sm:grid-cols-2 2xl:grid-cols-4">
+    <div className="my-5 grid animate-fade-in gap-4 sm:grid-cols-2 2xl:grid-cols-4">
       {questionGroups.map((group) => (
         <Card className="q-card relative" key={group.id}>
           <CardHeader className="flex flex-row items-center pb-2 text-lg  font-bold">
