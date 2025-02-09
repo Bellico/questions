@@ -107,8 +107,8 @@ export const getNextQuestionToAnswerQuery = async (roomId: string) : Promise<Roo
     }
   })
 
-  if(result?.question){
-    return{
+  if (result?.question) {
+    return {
       questionId : result.question.id,
       title: result?.question?.title || `Question ${result.order}`,
       subject: result.question.subject,

@@ -23,7 +23,7 @@ export default async function GroupBoardPage({
   const session = await auth()
   const isOwner = await isGroupOwner(id, session!.user.id!)
 
-  if(!isOwner){
+  if (!isOwner) {
     notFound()
   }
 

@@ -27,7 +27,7 @@ export function QuestionsEditorAccordionHeader( {
     setNodeRef,
     transform,
     transition,
-  } = useSortable({id: keyMap})
+  } = useSortable({ id: keyMap })
 
   const style = {
     transform: CSS.Transform.toString(transform),
@@ -43,7 +43,7 @@ export function QuestionsEditorAccordionHeader( {
           <GripVertical className="inline-block h-full touch-manipulation" {...listeners} />
           <span className="mr-1">Question {index}</span>
           {title && <span className="hidden: mr-1 hidden text-xs sm:inline">({title})</span>}
-          <span className="text-second hidden text-xs sm:inline"> - {t('ResponseCount', {count : responseCount })}</span>
+          <span className="text-second hidden text-xs sm:inline"> - {t('ResponseCount', { count : responseCount })}</span>
         </div>
 
         <div className="text-right">
@@ -53,7 +53,7 @@ export function QuestionsEditorAccordionHeader( {
 
       <div className="container sm:hidden">
         {title && <span className="mr-1 text-xs">({title})</span>}
-        <span className="text-second text-xs"> - {t('ResponseCount', {count : responseCount })}</span>
+        <span className="text-second text-xs"> - {t('ResponseCount', { count : responseCount })}</span>
       </div>
     </div>
   )

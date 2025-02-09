@@ -36,7 +36,7 @@ export function RoomResponses({ submitAnswerChoices }: RoomResponsesProps) {
     useShallow(state => [ state.isAutoSubmit, state.setAutoSubmit ])
   )
 
-  const responses = currentQuestion.responses.map(r => ({...r, isCorrect : false}))
+  const responses = currentQuestion.responses.map(r => ({ ...r, isCorrect : false }))
   const form = useForm<RoomResponsesType>({
     resolver: zodResolver(RoomResponsesSchema),
     values: { responses },
@@ -61,7 +61,7 @@ export function RoomResponses({ submitAnswerChoices }: RoomResponsesProps) {
     )
   }
 
-  return(
+  return (
     <Form {...form}>
       <form id="form-room-responses" onSubmit={form.handleSubmit(onSubmit)}>
 

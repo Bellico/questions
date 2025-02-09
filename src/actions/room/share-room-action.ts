@@ -24,7 +24,7 @@ export const shareRoomAction = withValidateAndSession(
     try {
       const room = await prisma.$transaction(async (tx) => {
 
-        if(!friend){
+        if (!friend) {
           friend = await tx.user.create({
             data:{
               email: data.usermail

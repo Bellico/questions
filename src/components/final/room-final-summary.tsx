@@ -11,11 +11,11 @@ type RoomFinalSummaryProps = {
   canRetry: boolean
 }
 
-export async function RoomFinalSummary({roomId, shareLink, canRetry} : RoomFinalSummaryProps) {
+export async function RoomFinalSummary({ roomId, shareLink, canRetry } : RoomFinalSummaryProps) {
   const { t } = await translate('global')
   const stats = await getRoomFinalScoreQuery(roomId)
 
-  return(
+  return (
     <section className="container">
       <div className="mb-5 space-y-2">
         <h1 className="text-3xl font-bold">{t('AnswersSummary')}</h1>

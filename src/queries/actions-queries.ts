@@ -76,14 +76,14 @@ export const computeNextQuestionQuery = async (groupId: string, withRandom: bool
     }
   })
 
-  if(availableQuestions.length === 0){
+  if (availableQuestions.length === 0) {
     return null
   }
 
   const questionIds = availableQuestions.map(q => q.id)
   let nextQuestionId = questionIds[0]
 
-  if(withRandom){
+  if (withRandom) {
     nextQuestionId = questionIds[Math.floor(Math.random() * questionIds.length)]
   }
 

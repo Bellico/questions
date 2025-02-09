@@ -23,12 +23,12 @@ export default async function StartPage({
 
   const group = await getGroupForStartQuery(id)
   const activeRooms = await getGroupInProgressQuery([group.id], session.user.id!)
-  if(activeRooms.length > 0){
+  if (activeRooms.length > 0) {
     redirect(`/room/${activeRooms[0].id}`)
   }
 
   const lastSettings = await getLastSettingsRoomQuery(group.id, session.user.id!)
-  if(!canAccess.isAuthor){
+  if (!canAccess.isAuthor) {
     lastSettings.mode = 'Rating'
   }
 

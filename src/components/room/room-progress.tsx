@@ -13,28 +13,28 @@ export function RoomProgress({ withNavigate, navigate } : RoomProgressProps) {
   const progressingId = useRoomContext(state => state.progressingId)
 
   let showTitle = 'flex'
-  if(progress.length > 5) showTitle = 'hidden sm:flex'
-  if(progress.length > 10) showTitle = 'hidden lg:flex'
-  if(progress.length > 15) showTitle = 'hidden xl:flex'
-  if(progress.length > 20) showTitle = 'hidden 2xl:flex'
-  if(progress.length > 30) showTitle = 'hidden'
+  if (progress.length > 5) showTitle = 'hidden sm:flex'
+  if (progress.length > 10) showTitle = 'hidden lg:flex'
+  if (progress.length > 15) showTitle = 'hidden xl:flex'
+  if (progress.length > 20) showTitle = 'hidden 2xl:flex'
+  if (progress.length > 30) showTitle = 'hidden'
 
   const showTitleReverse = progress.length > 5 ? showTitle.replace('hidden', 'flex').replace(':flex',':hidden') : 'hidden'
 
-  function getAnwserResultDisplay(value : boolean | null){
-    if(value === null) return null
+  function getAnwserResultDisplay(value : boolean | null) {
+    if (value === null) return null
     return value ?
       <CheckCheck className="ml-2 text-success brightness-50 dark:brightness-200" /> :
       <XCircle className="ml-2 text-destructive brightness-50 dark:brightness-200" />
   }
 
   async function navigateTo(questionId: string | null, isAnswer: boolean) {
-    if(withNavigate && questionId && currentQuestion.questionId !== questionId && isAnswer) {
+    if (withNavigate && questionId && currentQuestion.questionId !== questionId && isAnswer) {
       await navigate(questionId)
     }
   }
 
-  return(
+  return (
     <div className="group fixed  bottom-0 h-6 w-full animate-fade-in border-t border-t-gray-200 bg-[#cbc7c7] dark:border-t-black dark:bg-[#1e1e1e] lg:h-8">
       <div className="flex size-full">
         {progress.map((q, i) => (
@@ -64,7 +64,7 @@ export function RoomProgress({ withNavigate, navigate } : RoomProgressProps) {
       </div>
 
       <div className={cn('absolute inset-0 flex items-center justify-center group-hover:hidden', showTitleReverse)}>
-        <span style={{'textShadow': '#000 1px 0 1px'}} className="px-2">{progress.filter(p => p.isAnswer).length} / {progress.length}</span>
+        <span style={{ 'textShadow': '#000 1px 0 1px' }} className="px-2">{progress.filter(p => p.isAnswer).length} / {progress.length}</span>
       </div>
     </div>
   )

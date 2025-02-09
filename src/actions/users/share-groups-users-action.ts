@@ -20,7 +20,7 @@ export const shareGroupsUsersAction = withValidateAndSession(
         }
       })
 
-      const groupsUsers = data.userIdsToShared.map(d => ({ groupId: data.groupId, userId: d}))
+      const groupsUsers = data.userIdsToShared.map(d => ({ groupId: data.groupId, userId: d }))
       await tx.groupsUsers.createMany({
         data: groupsUsers
       })

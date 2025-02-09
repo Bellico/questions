@@ -27,7 +27,7 @@ export const loginPasswordUserAction = withValidate(
       }
     })
 
-    if(!user){
+    if (!user) {
       return {
         success: false
       }

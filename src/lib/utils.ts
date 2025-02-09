@@ -31,7 +31,7 @@ export const randomSwName = () => swNames[Math.floor(Math.random() * swNames.len
 
 export const randomCommonName = () => commonNames[Math.floor(Math.random() * commonNames.length)]
 
-export function generateRandomGroup(questionCount: number = 6, responsesCount: number = 4){
+export function generateRandomGroup(questionCount: number = 6, responsesCount: number = 4) {
   const questions: unknown[] = []
   for (let q = 0; q < questionCount; q++) {
 
@@ -57,7 +57,7 @@ export function generateRandomGroup(questionCount: number = 6, responsesCount: n
   return arrayToMap(questions)
 }
 
-export function computeScore(results: number[]){
+export function computeScore(results: number[]) {
   const success = results.filter(r => r === 100).length
 
   return {
@@ -67,12 +67,12 @@ export function computeScore(results: number[]){
   }
 }
 
-export function computeAchievement(goodCount: number, totalGood: number, choicesCount: number){
-  if(totalGood == 0) return 0
+export function computeAchievement(goodCount: number, totalGood: number, choicesCount: number) {
+  if (totalGood == 0) return 0
 
-  else if(goodCount == totalGood && choicesCount == totalGood) return 100
+  else if (goodCount == totalGood && choicesCount == totalGood) return 100
 
-  else if(goodCount < totalGood && choicesCount <= totalGood) return (goodCount * 100) / totalGood
+  else if (goodCount < totalGood && choicesCount <= totalGood) return (goodCount * 100) / totalGood
 
   else {
     const diff = goodCount - (choicesCount - totalGood)
@@ -93,13 +93,13 @@ export function secondsToDhms(seconds : number, t : (key: string, o: unknown) =>
 
   let label = ''
 
-  if(d > 0) label += ' ' + d + ' ' + (d == 1 ? t('Day', { ns: 'global'}) : t('Days', { ns: 'global'}))
+  if (d > 0) label += ' ' + d + ' ' + (d == 1 ? t('Day', { ns: 'global' }) : t('Days', { ns: 'global' }))
 
-  if(h > 0) label += ' ' + h + ' ' + (h == 1 ? t('Hour', { ns: 'global'}) : t('Hours', { ns: 'global'}))
+  if (h > 0) label += ' ' + h + ' ' + (h == 1 ? t('Hour', { ns: 'global' }) : t('Hours', { ns: 'global' }))
 
-  if(m > 0) label += ' ' + m + ' ' + (m == 1 ? 'minute' : 'minutes')
+  if (m > 0) label += ' ' + m + ' ' + (m == 1 ? 'minute' : 'minutes')
 
-  label +=  ' ' + s + ' ' + (s == 1 ? t('Second', { ns: 'global'}) : t('Seconds', { ns: 'global'}))
+  label +=  ' ' + s + ' ' + (s == 1 ? t('Second', { ns: 'global' }) : t('Seconds', { ns: 'global' }))
 
   return label
 }

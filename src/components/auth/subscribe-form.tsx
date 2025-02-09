@@ -43,7 +43,7 @@ export default function SubscribeForm() {
     })
 
     const json = await result.json()
-    if(json.goToLogin){
+    if (json.goToLogin) {
       setError('root.goToLogin', { type: 'custom' })
       router.push(`/login?email=${data.email}`)
       return

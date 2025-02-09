@@ -20,7 +20,7 @@ export const createQuestionGroupAction = withValidateAndSession(
       }
     })
 
-    if(existingName){
+    if (existingName) {
       return {
         success: false,
         message: t('ExistingGroup', { groupName : data.name }),

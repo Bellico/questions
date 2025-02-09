@@ -21,7 +21,7 @@ export default async function RoomPage({
 
   const room = await canViewFinalRoomQuery(id, session?.user.id, shareLink)
 
-  if(!room){
+  if (!room) {
     redirect('/')
   }
 
@@ -33,8 +33,8 @@ export default async function RoomPage({
     shareLink: shareLink
   }
 
-  if(!room.withResults){
-    return(
+  if (!room.withResults) {
+    return (
       <RoomFinalHero {...hero} />
     )
   }

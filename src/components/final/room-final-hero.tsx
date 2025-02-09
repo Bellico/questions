@@ -22,7 +22,7 @@ export async function RoomFinalHero({
 }>) {
   const { t } = await translate('room')
 
-  return(
+  return (
     <section className="relative flex min-h-[calc(100vh-65px)] items-center justify-center">
 
       {playConfetti && <Confetti />}

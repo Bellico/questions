@@ -23,7 +23,7 @@ export function QuestionGroupsListActions({ groupId, roomInProgress }: Questions
   const requestAction = useAction()
   const { t } = useTranslation(['global', 'actions'])
 
-  async function onAbortAction(){
+  async function onAbortAction() {
     requestAction(
       () => abortRoomAction(groupId),
       () => {},
@@ -31,7 +31,7 @@ export function QuestionGroupsListActions({ groupId, roomInProgress }: Questions
     )
   }
 
-  async function onDeleteAction(){
+  async function onDeleteAction() {
     requestAction(
       () => deleteQuestionGroupAction(groupId),
       () => {},
@@ -39,7 +39,7 @@ export function QuestionGroupsListActions({ groupId, roomInProgress }: Questions
     )
   }
 
-  async function onDuplicateAction(){
+  async function onDuplicateAction() {
     requestAction(
       () => duplicateQuestionGroupAction(groupId),
       () => {},
@@ -47,12 +47,12 @@ export function QuestionGroupsListActions({ groupId, roomInProgress }: Questions
     )
   }
 
-  async function onExportAction(){
+  async function onExportAction() {
     const res = await fetch(`/api/export?id=${groupId}`)
     await downloadBlob(res)
   }
 
-  function closeDropDownHack(e){
+  function closeDropDownHack(e) {
     e.preventDefault(); dropDownRef.current?.remove()
   }
 

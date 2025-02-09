@@ -37,11 +37,11 @@ export function UserSettings(data: UserSettingsType & { email: string}) {
     mode: 'onChange'
   })
 
-  const {control, register, handleSubmit, getValues, setValue, formState: { isValid} } = form
+  const { control, register, handleSubmit, getValues, setValue, formState: { isValid } } = form
   const { usePassword } = getValues()
 
   useEffect(() => {
-    if(!usePassword) setValue('password', '')
+    if (!usePassword) setValue('password', '')
   }, [setValue, usePassword])
 
   const updateUserSettings = async (data: UserSettingsType) => {
@@ -52,7 +52,7 @@ export function UserSettings(data: UserSettingsType & { email: string}) {
         setDialogOpen(USER_DIALOG, false)
         router.refresh()
       },
-      t('PreferencesUpdated', { ns: 'actions'})
+      t('PreferencesUpdated', { ns: 'actions' })
     )
   }
 

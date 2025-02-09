@@ -22,7 +22,7 @@ export function QuestionsEditorAccordion() {
   const [accordionState, toggleExpand, expandAll, collapseAll] = useAccordion(questionsMap, lastQuestionAdded)
 
   function dragEndEvent(e: DragEndEvent) {
-    const {active, over} = e
+    const { active, over } = e
     if (over && active.id !== over.id)  changeOrder(active.id as string, over.id as string)
   }
 
@@ -58,7 +58,7 @@ export function QuestionsEditorAccordion() {
       </Accordion>
 
       <Button variant="secondary" size="lg" onClick={() => addNewQuestion()} className="w-full">
-        {t('AddQuestion', { ns: 'editor'} )}
+        {t('AddQuestion', { ns: 'editor' } )}
       </Button>
     </>
   )

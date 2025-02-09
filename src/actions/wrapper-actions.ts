@@ -27,7 +27,7 @@ const ZparseOrError = <T extends ZodType, TResult>(
   }
 }
 
-export function withValidate<TResult, TData, TSchema extends ZodType>(schema : TSchema,  action : (data: TData) => Promise<ActionResultType<TResult>>){
+export function withValidate<TResult, TData, TSchema extends ZodType>(schema : TSchema,  action : (data: TData) => Promise<ActionResultType<TResult>>) {
   return async(data: TData) => {
     const errors = ZparseOrError<TSchema, TResult>(schema, data)
     if (errors) return errors
@@ -36,7 +36,7 @@ export function withValidate<TResult, TData, TSchema extends ZodType>(schema : T
   }
 }
 
-export function withValidateAndSession<TResult, TData, TSchema extends ZodType>(schema : TSchema,  action : (data: TData, userId: string) => Promise<ActionResultType<TResult>>){
+export function withValidateAndSession<TResult, TData, TSchema extends ZodType>(schema : TSchema,  action : (data: TData, userId: string) => Promise<ActionResultType<TResult>>) {
   return async(data: TData) => {
     const errors = ZparseOrError<TSchema, TResult>(schema, data)
     if (errors) return errors

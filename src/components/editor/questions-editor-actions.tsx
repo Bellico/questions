@@ -46,13 +46,13 @@ export function QuestionsEditorActions({ useDraft, saveGroupAction }: QuestionsE
         persist?.clearStorage()
         router.back()
       },
-      !groupId ? t('GroupCreated', { ns: 'actions'}) : t('GroupUpdated', { ns: 'actions'})
+      !groupId ? t('GroupCreated', { ns: 'actions' }) : t('GroupUpdated', { ns: 'actions' })
     )
   }
 
   function onBack() {
     const persistName = persist?.getOptions().name
-    if(persistName && localStorage.getItem(persistName)){
+    if (persistName && localStorage.getItem(persistName)) {
       setDialogOpen(true)
       return
     }

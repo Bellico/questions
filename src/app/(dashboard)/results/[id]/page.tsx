@@ -14,7 +14,7 @@ export default async function ResultsPage({
   const session = await auth()
   const isOwner = await isRoomOwner(params.id, session!.user.id!)
 
-  if(!isOwner){
+  if (!isOwner) {
     notFound()
   }
 

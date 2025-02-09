@@ -40,13 +40,13 @@ export const answerRoomAction = withValidate(
             achievement,
             dateEnd,
             choices: {
-              create: data.choices.map(rId => ({ responseId: rId}))
+              create: data.choices.map(rId => ({ responseId: rId }))
             }
           }
         })
 
         // Prepare next question if exists
-        if(nextQuestionId){
+        if (nextQuestionId) {
           await tx.answer.create({
             data: {
               roomId: data.roomId,
@@ -58,7 +58,7 @@ export const answerRoomAction = withValidate(
         }
 
         // Else End room
-        else{
+        else {
           const results = await tx.answer.findMany({
             where:{
               roomId: data.roomId,

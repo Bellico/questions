@@ -11,9 +11,9 @@ const show_time = (delay : number)  => ({
 })
 
 const levitation ={
-  initial: {  scale: 1},
+  initial: {  scale: 1 },
   whileInView: { scale : 1.5 },
-  transition: { ease: 'linear', duration: 1.5, repeat: Infinity, repeatType: 'reverse' as const},
+  transition: { ease: 'linear', duration: 1.5, repeat: Infinity, repeatType: 'reverse' as const },
   viewport: { once: true },
 }
 
@@ -23,15 +23,15 @@ export const HomeFeatures = () => {
   const opacity = useTransform(scrollYProgress, [0.10, 0.17], [0, 0.5])
   const translateY = useTransform(scrollYProgress, [0.02, 0.17], [1000, 0])
 
-  return(
+  return (
     <>
       <section className="relative h-screen py-20">
         <div className="container max-w-(--breakpoint-2xl) space-y-28">
-          <motion.div style={{scale, translateY}} className="sticky flex items-center justify-center">
-            <motion.div {...levitation} style={{opacity}}  className="absolute -z-10 aspect-square w-[700px] origin-center rounded-full bg-primary blur-[60px]"></motion.div>
+          <motion.div style={{ scale, translateY }} className="sticky flex items-center justify-center">
+            <motion.div {...levitation} style={{ opacity }}  className="absolute -z-10 aspect-square w-[700px] origin-center rounded-full bg-primary blur-[60px]"></motion.div>
             <QEditorIcon colored className="size-[30rem] drop-shadow-q-editor-icon" />
           </motion.div>
-          <motion.div style={{translateY}} {...show_time(0.3)} className="relative space-y-6 px-4 text-center">
+          <motion.div style={{ translateY }} {...show_time(0.3)} className="relative space-y-6 px-4 text-center">
             <h2 className="text-5xl font-extrabold tracking-wide">Build your dream site. No compromises.</h2>
             <p className="text-xl tracking-wider">
               A web tool for all to explore, provide insight, scrutinize, and delegate — in any web browser and device.

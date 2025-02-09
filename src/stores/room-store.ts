@@ -53,7 +53,7 @@ export const createRoomStore = (initProps: RoomStateProps) => {
       const canGoNext = !!question.navigate
 
       // Random case -> find next empty slot to fill Id
-      if(newProgress.findIndex(p => p.id == question.questionId) < 0){
+      if (newProgress.findIndex(p => p.id == question.questionId) < 0) {
         const index = newProgress.findIndex(p => !p.id)
         newProgress[index].id = question.questionId
 
@@ -84,7 +84,7 @@ export const createRoomStore = (initProps: RoomStateProps) => {
         hasGood: result.hasGood!,
         correction: result.correction!,
         choices: choices
-      }}
+      } }
 
       return { currentQuestion: newCurrentQuestion, progress: newProgress, progressingId: result.id!, isEnd }
     }),

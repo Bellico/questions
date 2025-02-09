@@ -9,7 +9,7 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url)
   const id = url.searchParams.get('id')
 
-  if(!id) notFound()
+  if (!id) notFound()
 
   await isGroupOwnerOrThrow(id, userId)
 

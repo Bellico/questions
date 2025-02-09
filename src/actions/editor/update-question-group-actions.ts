@@ -19,7 +19,7 @@ export const updateQuestionGroupAction = withValidateAndSession(
     await isGroupOwnerOrThrow(data.id!, userId)
 
     const activeRooms = await getGroupInProgressQuery([data.id!], userId)
-    if(activeRooms.length > 0){
+    if (activeRooms.length > 0) {
       return {
         success: false,
         message: t('RoomInProgress'),

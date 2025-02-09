@@ -70,7 +70,7 @@ const getQuestionToNavigate = async (roomId: string, questionId: string) : Promi
     }
   })
 
-  return{
+  return {
     questionId : result.question?.id!,
     title: result?.question?.title || `Question ${result.order}`,
     subject: result.question?.subject!,

@@ -3,7 +3,7 @@ import { useEffect, useRef } from 'react'
 const confettiColors = ['#EF2964', '#00C09D', '#2D87B0', '#48485E','#EFFF1D']
 const confettiAnimations = ['slow', 'medium', 'fast']
 
-function createConfettiElement(offsetWidth: number){
+function createConfettiElement(offsetWidth: number) {
   const confettiEl = globalThis.document.createElement('div')
   const confettiSize = (Math.floor(Math.random() * 3) + 7) + 'px'
   const confettiBackground = confettiColors[Math.floor(Math.random() * confettiColors.length)]
@@ -23,21 +23,21 @@ export const useConfetti = () => {
   const containerRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    if(!containerRef.current) return
+    if (!containerRef.current) return
 
     const confettiInterval = setInterval(() => {
-      if(!containerRef.current) return
+      if (!containerRef.current) return
 
       const confettiEl = createConfettiElement(containerRef.current.offsetWidth!)
 
       setTimeout(function() {
-        if(containerRef.current) containerRef.current.removeChild(confettiEl)
+        if (containerRef.current) containerRef.current.removeChild(confettiEl)
       }, 3000)
 
       containerRef.current.appendChild(confettiEl)
     }, 25)
 
-    return(() => {
+    return (() => {
       clearInterval(confettiInterval)
     })
   },[])

@@ -384,7 +384,7 @@ export const getLastSettingsRoomQuery = async (groupId: string, userId: string) 
   })
 
   // if not any last settings
-  if(!settings){
+  if (!settings) {
     settings = await prisma.room.findFirst({
       where: {
         userId: userId,
@@ -406,7 +406,7 @@ export const getLastSettingsRoomQuery = async (groupId: string, userId: string) 
   }
 
   // Or Default
-  if(!settings) return {
+  if (!settings) return {
     groupId: groupId,
     mode: 'Training' as 'Training' | 'Rating',
     withRetry: 0,
@@ -418,7 +418,7 @@ export const getLastSettingsRoomQuery = async (groupId: string, userId: string) 
     withNavigate: false
   }
 
-  return {...settings, withRetry: settings.withRetry ?? 0, groupId}
+  return { ...settings, withRetry: settings.withRetry ?? 0, groupId }
 }
 
 export const getProgressInfosRoomQuery = async (roomId: string, groupId: string, withResult: boolean) : Promise<RoomProgressType[]> => {

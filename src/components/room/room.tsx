@@ -15,7 +15,7 @@ type RoomProps = {
 
 export function Room(props: RoomProps) {
   return (
-    <RoomProvider value={{...props}}>
+    <RoomProvider value={{ ...props }}>
       <RoomDisplay
         roomId={props.roomId}
         withNavigate={props.withNavigate}

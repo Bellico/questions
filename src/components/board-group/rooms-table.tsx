@@ -23,7 +23,7 @@ export function RoomsTable({ userId, roomsList } : { userId: string, roomsList: 
   const columns = RoomsTableColumns(userId, onRetryAction, onDeleteAction, t)
   const table = useDataTable(roomsList, columns)
   const userSelect = [...new Set(roomsList.map(r => r.user.email!))].sort()
-  const userMap = new Map(roomsList.map(item => [item.user.email, {email:  item.user.email!, name: item.user.name}]))
+  const userMap = new Map(roomsList.map(item => [item.user.email, { email:  item.user.email!, name: item.user.name }]))
 
   // Query list sort by dateStart asc for chart => make a sort desc for table
   useEffect(() => {
@@ -31,14 +31,14 @@ export function RoomsTable({ userId, roomsList } : { userId: string, roomsList: 
     dateColumn?.toggleSorting(true)
   },[table])
 
-  async function onRetryAction(roomId: string){
+  async function onRetryAction(roomId: string) {
     requestAction(
-      () => retryRoomAction({roomId}),
+      () => retryRoomAction({ roomId }),
       () => { redirect(`/room/${roomId}`) },
     )
   }
 
-  async function onDeleteAction(roomId: string){
+  async function onDeleteAction(roomId: string) {
     requestAction(
       () => deleteRoomAction(roomId),
       () => { },

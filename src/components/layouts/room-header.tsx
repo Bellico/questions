@@ -12,6 +12,7 @@ export const RoomHeader = async () =>{
       <div className="container flex h-16 items-center">
         <div className="mr-auto flex flex-1 gap-2">
           {/* Not use next link for cache trouble */}
+          {/* eslint-disable-next-line @next/next/no-html-link-for-pages */}
           <a href="/">
             <Button variant="ghost">
               <SquareX className="sm:mr-2" />

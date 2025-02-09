@@ -12,12 +12,12 @@ const QReaderMarkdown = dynamic(() => import('../mdx/mdx-markdown-reader'), {
 
 type RoomFinalResumeSectionPropsType = ArrayType<Awaited<ReturnType<typeof getRoomFinalResumeQuery>>>
 
-export function RoomFinalResumeSection({answerResume} : { answerResume: RoomFinalResumeSectionPropsType }) {
+export function RoomFinalResumeSection({ answerResume } : { answerResume: RoomFinalResumeSectionPropsType }) {
 
   const { t } = useTranslation(['room', 'global'])
 
-  if(answerResume.question == null){
-    return(
+  if (answerResume.question == null) {
+    return (
       <section className="py-24 shadow-inner even:bg-accent">
         <div className="container text-center">
           <h1 className="title flex flex-col items-center justify-center">
@@ -33,7 +33,7 @@ export function RoomFinalResumeSection({answerResume} : { answerResume: RoomFina
 
   const choices = answerResume.choices.map(c => c.responseId)
 
-  return(
+  return (
     <section className="relative py-36 shadow-inner even:bg-accent">
       <div className="container flex flex-col lg:flex-row">
         <div className="flex-1 text-center lg:text-left">
@@ -59,7 +59,7 @@ export function RoomFinalResumeSection({answerResume} : { answerResume: RoomFina
       </div>
 
       <div className="absolute inset-x-0 bottom-4 text-center text-sm text-muted-foreground">
-        {t('Duration', { ns: 'global'})}: {diffDateToDhms(answerResume.dateStart, answerResume.dateEnd!, t)}
+        {t('Duration', { ns: 'global' })}: {diffDateToDhms(answerResume.dateStart, answerResume.dateEnd!, t)}
       </div>
     </section>
   )

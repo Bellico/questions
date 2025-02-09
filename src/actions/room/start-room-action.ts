@@ -20,7 +20,7 @@ export const startRoomAction = withValidateAndSession(
     }
 
     const activeRooms = await getGroupInProgressQuery([data.groupId], userId)
-    if(activeRooms.length > 0){
+    if (activeRooms.length > 0) {
       throw new Error('403 Forbidden')
     }
 

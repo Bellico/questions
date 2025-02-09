@@ -4,7 +4,7 @@ let memoryState: boolean = false
 const listeners: Array<(state: boolean) => void> = []
 
 export function dispatchLoader(newState: boolean) {
-  if(newState != memoryState){
+  if (newState != memoryState) {
     memoryState = newState
     listeners.forEach((listener) => {
       listener(newState)
@@ -25,6 +25,6 @@ export function useLoader() {
     }
   }, [state])
 
-  return { loading: state}
+  return { loading: state }
 }
 

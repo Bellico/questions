@@ -14,7 +14,7 @@ const show_time = (delay : number)  => ({
 export const HomeHero = () => {
   const { t } = useTranslation('global')
 
-  return(
+  return (
     <section className="h-screen w-full py-12 md:py-24 lg:py-32 xl:py-48">
       <div className="container flex h-full items-center justify-center px-4 md:px-6">
         <div className="flex flex-col items-center space-y-4 text-center">

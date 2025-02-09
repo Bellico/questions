@@ -11,12 +11,12 @@ import { translate } from '@/queries/utils-queries'
 import { BarChart3, Group, MoreHorizontal, Pencil, Play, Plus, Users } from 'lucide-react'
 import Link from 'next/link'
 
-export async function QuestionGroupsList({userId} : { userId: string}) {
+export async function QuestionGroupsList({ userId } : { userId: string}) {
   const { t } = await translate('global')
   const questionGroups = await getGroupsListQuery(userId)
 
   if (questionGroups.length == 0) {
-    return(
+    return (
       <QuestionGroupNew>
         <span>{t('AddFirst')}</span>
       </QuestionGroupNew>

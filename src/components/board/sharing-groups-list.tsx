@@ -5,7 +5,7 @@ import { translate } from '@/queries/utils-queries'
 import { Group, Play } from 'lucide-react'
 import Link from 'next/link'
 
-export async function SharingGroupsList({userId} : { userId: string}) {
+export async function SharingGroupsList({ userId } : { userId: string}) {
   const { t } = await translate('global')
   const questionGroups = await getSharingGroupsListQuery(userId)
 

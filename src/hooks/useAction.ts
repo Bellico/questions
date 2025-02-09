@@ -17,12 +17,12 @@ export function useAction(useAppLoader : boolean = true) {
     action:  () => Promise<ActionResultType<T>>,
     onSuccess: (data?:T) => void,
     successMessage?: string
-  ){
+  ) {
     startTransition(async () => {
       const result =  await action()
 
       if (result.success) {
-        if(successMessage){
+        if (successMessage) {
           toast({
             variant: 'success',
             title: successMessage,
@@ -30,7 +30,7 @@ export function useAction(useAppLoader : boolean = true) {
         }
 
         onSuccess(result.data)
-      }else{
+      } else {
         toast({
           variant: 'destructive',
           title: 'Something wrong!',

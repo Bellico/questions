@@ -29,9 +29,9 @@ export function useRoomFader(roomId: string, shareLink?: string) {
 
   // IsEnd so show final
   useEffect(()=> {
-    if(!isEnd) return
+    if (!isEnd) return
     // When correction, don't show final automatically, the user will do it
-    if(currentQuestion.navigate) return
+    if (currentQuestion.navigate) return
 
     const time = setTimeout(() => {
       showFinal()
@@ -44,7 +44,7 @@ export function useRoomFader(roomId: string, shareLink?: string) {
 
   // Have next Question so appears it
   useEffect(()=> {
-    if(!nextQRef.current) return
+    if (!nextQRef.current) return
 
     const time = setTimeout(() => {
       appearsNewQuestion(nextQRef.current!)
@@ -56,7 +56,7 @@ export function useRoomFader(roomId: string, shareLink?: string) {
   }, [appearsNewQuestion, animation])
 
   // Valide choices and save next question then fadeOut
-  async function submitChoices(choices: string[]){
+  async function submitChoices(choices: string[]) {
     startTransition(async () => {
       const result = await answerRoomAction({
         roomId: roomId,
@@ -65,12 +65,12 @@ export function useRoomFader(roomId: string, shareLink?: string) {
         shareLink
       })
 
-      if(!result.data) throw new Error('Answer Room failed')
+      if (!result.data) throw new Error('Answer Room failed')
 
       const isEnd = result.data.next == null
       nextQRef.current = result.data.next
 
-      if(result.data.result.correction){
+      if (result.data.result.correction) {
         applyCorrection(result.data.result, choices, isEnd)
         return
       }
@@ -79,7 +79,7 @@ export function useRoomFader(roomId: string, shareLink?: string) {
     })
   }
 
-  async function navigate(questionId : string){
+  async function navigate(questionId : string) {
     startTransition(async () => {
       const result = await navigateRoomAction({
         roomId: roomId,
@@ -87,7 +87,7 @@ export function useRoomFader(roomId: string, shareLink?: string) {
         shareLink
       })
 
-      if(result.data){
+      if (result.data) {
         nextQRef.current = result.data
         disappears()
       }

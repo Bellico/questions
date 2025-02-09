@@ -11,12 +11,12 @@ export default function Template({
   groupboard: ReactNode
   groupstats: ReactNode
 }) {
-  return(
+  return (
     <>
       <motion.div
         className="min-h-[354px] bg-accent shadow-md"
         initial={{ height: 'auto' }}
-        animate={{ height: 'calc(100vh - 65px)'}}
+        animate={{ height: 'calc(100vh - 65px)' }}
         transition={{ duration: 0.8, delay: 0.3, ease: 'easeInOut' }}
       >
         {groupstats}

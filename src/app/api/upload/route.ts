@@ -27,7 +27,7 @@ export async function POST(request: NextRequest) {
     }
   })
 
-  if(existing) {
+  if (existing) {
     return NextResponse.json({ success: true, url: `${process.env.PUBLIC_URL}/api/upload?id=${existing.id}` })
   }
 
@@ -49,7 +49,7 @@ export async function GET(request: NextRequest) {
   const url = new URL(request.url)
   const id = url.searchParams.get('id')
 
-  if(!id) notFound()
+  if (!id) notFound()
 
   const img = await prisma.images.findUniqueOrThrow({
     where:{

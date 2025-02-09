@@ -20,7 +20,7 @@ export const updateUserSettingsAction = withValidateAndSession(
       },
     })
 
-    if(data.usePassword && data.password){
+    if (data.usePassword && data.password) {
       const passwordHash = createHmac('sha256', process.env.NEXTAUTH_SECRET!).update(data.password).digest('hex')
 
       await prisma.user.update({
@@ -33,7 +33,7 @@ export const updateUserSettingsAction = withValidateAndSession(
       })
     }
 
-    if(!data.usePassword){
+    if (!data.usePassword) {
       await prisma.user.update({
         where: {
           id: userId

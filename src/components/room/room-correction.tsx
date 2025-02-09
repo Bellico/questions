@@ -13,10 +13,10 @@ export function RoomCorrection({ goToNext }: RoomCorrectionProps) {
 
   const currentQuestion = useRoomContext(state => state.currentQuestion)
   const canGoNext = useRoomContext(state => state.canGoNext)
-  const {correction, choices} = currentQuestion.navigate!
-  const responses = currentQuestion.responses.map(r => ({...r, isCorrect : choices.includes(r.id) }))
+  const { correction, choices } = currentQuestion.navigate!
+  const responses = currentQuestion.responses.map(r => ({ ...r, isCorrect : choices.includes(r.id) }))
 
-  return(
+  return (
     <>
       <div className="my-5 grid gap-4 md:grid-cols-2 md:gap-8">
         {responses.map((item, index) => (

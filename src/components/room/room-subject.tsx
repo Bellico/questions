@@ -18,7 +18,7 @@ export function RoomSubject() {
     qEditorMarkdownRef.current?.setMarkdown(currentQuestion.subject)
   },[currentQuestion.subject])
 
-  return(
+  return (
     <>
       {currentQuestion.navigate?.correction ?
         <h1 className="title flex flex-col items-center justify-center">
@@ -30,7 +30,7 @@ export function RoomSubject() {
         <h1 className="title">{currentQuestion.title}</h1>
       }
 
-      <div className={cn({'text-center': shouldCenterSubject})}>
+      <div className={cn({ 'text-center': shouldCenterSubject })}>
         <QReaderMarkdown ref={qEditorMarkdownRef} markdown={currentQuestion.subject}  />
       </div>
     </>

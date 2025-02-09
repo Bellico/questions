@@ -9,7 +9,7 @@ import Link from 'next/link'
 import { PropsWithChildren, useState } from 'react'
 import { useTranslation } from 'react-i18next'
 
-export function QuestionGroupNew({className, children} : PropsWithChildren<{className? : string}>) {
+export function QuestionGroupNew({ className, children } : PropsWithChildren<{className? : string}>) {
   const [fileEnter, setFileEnter] = useState(false)
   const requestAction = useAction()
   const { t } = useTranslation(['actions'])
@@ -51,7 +51,7 @@ export function QuestionGroupNew({className, children} : PropsWithChildren<{clas
         .forEach(async (item) => {
           const fileObject = item.getAsFile()
           const txt = await fileObject?.text()
-          if(!txt) return
+          if (!txt) return
 
           const data = JSON.parse(txt)
           onDrop(data.name, data.questions)

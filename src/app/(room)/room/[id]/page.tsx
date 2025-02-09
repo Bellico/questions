@@ -16,12 +16,12 @@ export default async function RoomPage({
   const { shareLink } = await searchParams
 
   const room = await canPlayRoomQuery(id, session?.user.id, shareLink)
-  if(!room){
+  if (!room) {
     notFound()
   }
 
   const nextQuestion = await getNextQuestionToAnswerQuery(room.id)
-  if(!nextQuestion){
+  if (!nextQuestion) {
     redirect('/')
   }
 

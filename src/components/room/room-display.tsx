@@ -15,15 +15,15 @@ type RoomDisplayProps = {
   shareLink?: string
 }
 
-export function RoomDisplay({roomId, withProgress, withNavigate, shareLink} : RoomDisplayProps) {
+export function RoomDisplay({ roomId, withProgress, withNavigate, shareLink } : RoomDisplayProps) {
   const currentQuestion = useRoomContext(state => state.currentQuestion)
   const isCompleted = useRoomContext(state => state.isCompleted)
   const disappears = useRoomContext(state => state.disappears)
 
-  const { isPending, animation, submitChoices, navigate} = useRoomFader(roomId, shareLink)
+  const { isPending, animation, submitChoices, navigate } = useRoomFader(roomId, shareLink)
 
-  if(isCompleted){
-    if(shareLink)
+  if (isCompleted) {
+    if (shareLink)
       redirect(`/final/${roomId}/?shareLink=${shareLink}`)
     else
       redirect(`/final/${roomId}`)

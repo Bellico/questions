@@ -42,7 +42,7 @@ export function GroupsUsersSharing({ groupId } : GroupsUsersSharingProps) {
     resolver: zodResolver(ShareFormSchema),
   })
 
-  const {control, handleSubmit } = form
+  const { control, handleSubmit } = form
   const { fields: usersField, append } = useFieldArray({
     control,
     name: 'users',
@@ -54,7 +54,7 @@ export function GroupsUsersSharing({ groupId } : GroupsUsersSharingProps) {
       const response = await fetch(`/api/groups-users?id=${groupId}`)
       const json = await response.json()
 
-      form.setValue('users', json.sharedUsers.map(userId => ({ userId, isShared: true})))
+      form.setValue('users', json.sharedUsers.map(userId => ({ userId, isShared: true })))
       setAllUsers(json.users)
       setDialogLoading(false)
     }
@@ -73,15 +73,15 @@ export function GroupsUsersSharing({ groupId } : GroupsUsersSharingProps) {
       () => {
         setDialogOpen(SHARE_DIALOG, false)
       },
-      t('GroupsUsersShared', { ns: 'actions'})
+      t('GroupsUsersShared', { ns: 'actions' })
     )
   }
 
-  function getUserTemplate(userId: string){
+  function getUserTemplate(userId: string) {
     const user = allUsers.find(u => u.id === userId)
-    if(!user) return 'invalid'
+    if (!user) return 'invalid'
 
-    return(
+    return (
       <label htmlFor={userId} className="text-sm">
         {user.name && <h3 className="">{user.name}</h3>}
         <span className="text-gray-500">{user.email}</span>

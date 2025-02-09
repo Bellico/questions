@@ -22,7 +22,7 @@ export const deleteQuestionGroupAction = withValidateAndSession(
       },
     })
 
-    if(isSharing !== null){
+    if (isSharing !== null) {
       return {
         success: false,
         message: t('SharedGroup'),

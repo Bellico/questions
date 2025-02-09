@@ -8,7 +8,7 @@ type RoomNavigateProps = {
   navigate: (questionId: string) => Promise<void>
 }
 
-export function RoomNavigate({navigate} : RoomNavigateProps) {
+export function RoomNavigate({ navigate } : RoomNavigateProps) {
 
   const { t } = useTranslation('room')
   const canGoPrev = useRoomContext(state => state.canGoPrev)
@@ -18,11 +18,11 @@ export function RoomNavigate({navigate} : RoomNavigateProps) {
     useShallow((s) => [s.getPrevQuestionId, s.getNextQuestionId]),
   )
 
-  async function navigateToPrev(){
+  async function navigateToPrev() {
     await navigate(goToPrevQuestion())
   }
 
-  async function navigateToNext(){
+  async function navigateToNext() {
     await navigate(goToNextQuestion())
   }
 

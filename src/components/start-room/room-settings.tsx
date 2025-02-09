@@ -32,29 +32,29 @@ export function RoomSettings(settings: RoomSettingsType & { isAuthor: boolean}) 
 
   useEffect(() => {
     // Correction is only in Training
-    if(mode === RoomMode.Rating && withCorrection) setValue('withCorrection', false)
+    if (mode === RoomMode.Rating && withCorrection) setValue('withCorrection', false)
 
     // Result in progress bar needs progressbar
-    if(!withProgress) setValue('withProgressState', false)
+    if (!withProgress) setValue('withProgressState', false)
 
     // Correction means result in progress bar by default
-    if(withCorrection && withProgress) setValue('withProgressState', true)
+    if (withCorrection && withProgress) setValue('withProgressState', true)
 
     // Retries only in Rating
-    if(mode === RoomMode.Training) {
+    if (mode === RoomMode.Training) {
       setValue('withRetry', 0)
       clearErrors('withRetry')
     }
   }, [setValue, clearErrors, mode, withCorrection, withProgress])
 
-  async function start(){
+  async function start() {
     requestAction(
       () => startRoomAction(getValues()),
       (data) => redirect(`/room/${data}`),
     )
   }
 
-  return(
+  return (
     <Form {...form}>
       <form id="form-room-settings" className="m-auto space-y-6 lg:w-2/3">
 

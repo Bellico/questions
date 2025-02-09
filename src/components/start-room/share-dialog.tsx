@@ -18,7 +18,7 @@ const ShareSchema = z.object({
 
 type ShareSchemaType = z.infer<typeof ShareSchema>
 
-export function ShareDialog( {settingValues} : { settingValues: () => RoomSettingsType}) {
+export function ShareDialog( { settingValues } : { settingValues: () => RoomSettingsType}) {
 
   const { t } = useTranslation('room')
   const shareLinkRef = useRef<string>('')
@@ -34,11 +34,11 @@ export function ShareDialog( {settingValues} : { settingValues: () => RoomSettin
     formState: { isSubmitting, isSubmitSuccessful, isValid },
   } = form
 
-  const share = async ({usermail}: ShareSchemaType) => {
-    const shareValues = { usermail, ...settingValues()}
+  const share = async ({ usermail }: ShareSchemaType) => {
+    const shareValues = { usermail, ...settingValues() }
     const result = await shareRoomAction(shareValues)
 
-    if(result.success){
+    if (result.success) {
       shareLinkRef.current = result.data!
     }
   }

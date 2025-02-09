@@ -14,7 +14,7 @@ export default async function StartPage({
   const { id } = await params
   const { shareLink } = await searchParams
 
-  if(!shareLink){
+  if (!shareLink) {
     redirect('/')
   }
 
@@ -29,14 +29,14 @@ export default async function StartPage({
 
   const { t } = await translate('room')
 
-  async function startShareRoom(){
+  async function startShareRoom() {
     'use server'
     const result = await startShareRoomAction({
       roomId: id,
       shareLink: shareLink
     })
 
-    if(result.success){
+    if (result.success) {
       redirect(`/room/${id}/?shareLink=${shareLink}`)
     }
   }

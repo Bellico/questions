@@ -14,7 +14,7 @@ const compat = new FlatCompat({
 const eslintConfig = [...compat.extends(
   'next/core-web-vitals',
   'eslint:recommended',
-  'plugin:tailwindcss/recommended',
+  //'plugin:tailwindcss/recommended',
   'next/typescript',
 ), {
   languageOptions: {
@@ -24,9 +24,12 @@ const eslintConfig = [...compat.extends(
   },
 
   rules: {
-    indent: ['error', 2],
-    quotes: ['error', 'single'],
-    semi: ['error', 'never'],
+    indent: ['warn', 2],
+    quotes: ['warn', 'single'],
+    semi: ['warn', 'never'],
+    'keyword-spacing': ['warn'],
+    'object-curly-spacing': ['warn', 'always'],
+    'space-before-blocks': ['warn', 'always'],
     'no-unused-vars': 0,
     'react/no-unescaped-entities': 0,
     '@typescript-eslint/no-non-null-asserted-optional-chain': 0,
