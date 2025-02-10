@@ -47,7 +47,7 @@ if (process.env.NODE_ENV === 'production') {
 
 // Clean training
 cron.schedule('0 3 * * *', async () => {
-  try{
+  try {
     const result =  await cleanTrainingJob()
     console.log(getIsoDate(), 'Training Rooms deleted:', result)
   } catch (error) {

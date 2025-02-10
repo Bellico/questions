@@ -13,9 +13,12 @@ const compat = new FlatCompat({
 
 const eslintConfig = [...compat.extends(
   'next/core-web-vitals',
-  'eslint:recommended',
-  //'plugin:tailwindcss/recommended',
   'next/typescript',
+  'eslint:recommended',
+  //'plugin:@typescript-eslint/recommended',
+  //'plugin:@typescript-eslint/strict',
+  //'plugin:@typescript-eslint/stylistic',
+  //'plugin:tailwindcss/recommended',
 ), {
   languageOptions: {
     globals: {
