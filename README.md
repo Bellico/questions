@@ -17,6 +17,9 @@ NEXTAUTH_SECRET = "*******"
 
 # Use for generate share link
 PUBLIC_URL = "https://yourdomain.com"
+
+# Use for magic link
+NO_REPLY = "noreply@questions-editor.fr"
 ```
 
 ## Use a local database
