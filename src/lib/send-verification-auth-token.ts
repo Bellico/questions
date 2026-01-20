@@ -45,7 +45,7 @@ export async function sendVerificationAuthToken(email: string, url: string) {
   const response = await fetch('https://api.resend.com/emails', {
     body: JSON.stringify({
       to: [email],
-      from: 'noreply@questions-editor.fr',
+      from: process.env.NO_REPLY,
       subject: 'Sign in link - Questions editor',
       html: html.replace('[Url]', url),
     }),
